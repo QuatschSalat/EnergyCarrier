@@ -1,0 +1,22 @@
+
+# Godot
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Mono
+.mono/
+data_*/
+
+
+# IDE
+.idea/
+out/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# Project
+dist/
