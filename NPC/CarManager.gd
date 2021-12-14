@@ -38,7 +38,7 @@ func create_new_car() -> void:
 		tmp_car = car_green.duplicate()
 
 	if tmp_car != null:
-		print("new car: ", tmp_car)
+#		print("new car: ", tmp_car)
 		add_child(tmp_car)
 		tmp_car.use_path_to_charger()
 
@@ -48,7 +48,7 @@ func _on_CarSpawnTimer_timeout():
 		car_spawn_timer.stop()
 		return
 
-	print("create car in ", car_spawn_timer.wait_time, " seconds")
+#	print("create car in ", car_spawn_timer.wait_time, " seconds")
 	create_new_car()
 	if ui_node != null:
 		if ui_node.game_time > 210:

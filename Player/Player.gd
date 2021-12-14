@@ -139,7 +139,7 @@ func game_over() -> void:
 	ui_node.show_won_screen()
 
 func _on_Area2D_area_entered(area):
-	print("hello: ", area)
+#	print("hello: ", area)
 	
 	if area.has_method("add_capacity"):
 		interaction_allowed = true
@@ -157,7 +157,7 @@ func _on_Area2D_area_entered(area):
 		hint_button.visible = true
 
 func _on_Area2D_area_exited(area):
-	print("ciao: ", area)
+#	print("ciao: ", area)
 	
 	interaction_allowed = false
 	reached_area = null

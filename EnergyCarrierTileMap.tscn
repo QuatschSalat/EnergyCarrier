@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=117 format=2]
 
 [ext_resource path="res://Assets/tilemap_packed.png" type="Texture" id=1]
 [ext_resource path="res://Player/Assets/Idle/tile_0024.png" type="Texture" id=2]
@@ -47,8 +47,14 @@ extents = Vector2( 11, 8 )
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 8, 9.5 )
 
+[sub_resource type="RectangleShape2D" id=88]
+extents = Vector2( 8, 9.5 )
+
+[sub_resource type="RectangleShape2D" id=89]
+extents = Vector2( 11, 8 )
+
 [sub_resource type="RectangleShape2D" id=73]
-extents = Vector2( 3, 3 )
+extents = Vector2( 3.44195, 2.42274 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
@@ -148,29 +154,9 @@ height = 0.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "idle_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_down",
+"name": "idle_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -178,14 +164,34 @@ animations = [ {
 "name": "idle_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "idle_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "idle_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "idle_down",
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
 "speed": 5.0
 } ]
 
@@ -252,27 +258,27 @@ extents = Vector2( 4, 4 )
 
 [sub_resource type="Curve2D" id=20]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -141, 412, 0, 0, 0, 0, 132, 412, 0, 0, 0, 0, 132, 286 )
+"points": PoolVector2Array( 0, 0, 0, 0, -141, 412, 0, 0, 0, 0, 132, 412, 0, 0, 0, 0, 132, 290 )
 }
 
 [sub_resource type="Curve2D" id=31]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 732, 391, 0, 0, 0, 0, 132, 391, 0, 0, 0, 0, 132, 286 )
+"points": PoolVector2Array( 0, 0, 0, 0, 732, 391, 0, 0, 0, 0, 132, 391, 0, 0, 0, 0, 132, 290 )
 }
 
 [sub_resource type="Curve2D" id=32]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 641, 0, 0, 0, 0, 132, 286 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 641, 0, 0, 0, 0, 132, 290 )
 }
 
 [sub_resource type="Curve2D" id=57]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 429, -8, 0, 0, 0, 0, 429, 391, 0, 0, 0, 0, 132, 391, 0, 0, 0, 0, 132, 287 )
+"points": PoolVector2Array( 0, 0, 0, 0, 429, -8, 0, 0, 0, 0, 429, 391, 0, 0, 0, 0, 132, 391, 0, 0, 0, 0, 132, 290 )
 }
 
 [sub_resource type="Curve2D" id=58]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 452, 635, 0, 0, 0, 0, 452, 391, 0, 0, 0, 0, 133, 391, 0, 0, 0, 0, 133, 286 )
+"points": PoolVector2Array( 0, 0, 0, 0, 452, 635, 0, 0, 0, 0, 452, 391, 0, 0, 0, 0, 133, 391, 0, 0, 0, 0, 133, 290 )
 }
 
 [sub_resource type="Curve2D" id=37]
@@ -302,27 +308,27 @@ _data = {
 
 [sub_resource type="Curve2D" id=30]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 286, 0, 0, 0, 0, 132, 268, 0, 0, 0, 0, 56, 268, 0, 0, 0, 0, 56, 224 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 290, 0, 0, 0, 0, 132, 268, 0, 0, 0, 0, 56, 268, 0, 0, 0, 0, 56, 224 )
 }
 
 [sub_resource type="Curve2D" id=33]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 286, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 88, 250, 0, 0, 0, 0, 88, 224 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 290, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 88, 250, 0, 0, 0, 0, 88, 224 )
 }
 
 [sub_resource type="Curve2D" id=34]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 286, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 120, 250, 0, 0, 0, 0, 120, 224 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 290, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 120, 250, 0, 0, 0, 0, 120, 224 )
 }
 
 [sub_resource type="Curve2D" id=35]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 286, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 152, 250, 0, 0, 0, 0, 152, 224 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 290, 0, 0, 0, 0, 132, 250, 0, 0, 0, 0, 152, 250, 0, 0, 0, 0, 152, 224 )
 }
 
 [sub_resource type="Curve2D" id=36]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 132, 286, 0, 0, 0, 0, 132, 268, 0, 0, 0, 0, 184, 268, 0, 0, 0, 0, 184, 224 )
+"points": PoolVector2Array( 0, 0, 0, 0, 132, 290, 0, 0, 0, 0, 132, 268, 0, 0, 0, 0, 184, 268, 0, 0, 0, 0, 184, 224 )
 }
 
 [sub_resource type="Curve2D" id=38]
@@ -476,19 +482,25 @@ shape = SubResource( 11 )
 position = Vector2( 0, 6.5 )
 shape = SubResource( 28 )
 
+[node name="TrafficCollisionArea" type="Area2D" parent="CarYellow"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="v" type="CollisionShape2D" parent="CarYellow/TrafficCollisionArea"]
+position = Vector2( 0, 6.5 )
+shape = SubResource( 88 )
+
+[node name="h" type="CollisionShape2D" parent="CarYellow/TrafficCollisionArea"]
+position = Vector2( 0, 8 )
+shape = SubResource( 89 )
+
 [node name="CollisionTrafficArea" type="Area2D" parent="CarYellow"]
 collision_layer = 264
 collision_mask = 264
 
 [node name="CollisionTraffic" type="CollisionShape2D" parent="CarYellow/CollisionTrafficArea"]
-position = Vector2( 0, 18 )
+position = Vector2( 0, 18.6 )
 shape = SubResource( 73 )
-
-[node name="CollisionTraffic2" type="CollisionShape2D" parent="CarYellow/CollisionTrafficArea"]
-visible = false
-position = Vector2( -14, 8 )
-shape = SubResource( 73 )
-disabled = true
 
 [node name="CarLeft" type="Node2D" parent="CarYellow"]
 visible = false
@@ -515,6 +527,7 @@ position = Vector2( 0, 8 )
 texture = SubResource( 13 )
 
 [node name="CarUp" type="Node2D" parent="CarYellow"]
+visible = false
 
 [node name="Roof" type="Sprite" parent="CarYellow/CarUp"]
 position = Vector2( 0, -8 )
@@ -593,6 +606,7 @@ collision_mask = 264
 script = ExtResource( 22 )
 
 [node name="CarInteraction" type="Area2D" parent="CarRed"]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -601,6 +615,7 @@ position = Vector2( 0, 7 )
 shape = SubResource( 21 )
 
 [node name="CollisionH" type="CollisionShape2D" parent="CarRed"]
+visible = false
 position = Vector2( 0, 8 )
 shape = SubResource( 11 )
 
@@ -609,21 +624,28 @@ visible = false
 position = Vector2( 0, 6.5 )
 shape = SubResource( 28 )
 
+[node name="TrafficCollisionArea" type="Area2D" parent="CarRed"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="v" type="CollisionShape2D" parent="CarRed/TrafficCollisionArea"]
+position = Vector2( 0, 6.5 )
+shape = SubResource( 88 )
+
+[node name="h" type="CollisionShape2D" parent="CarRed/TrafficCollisionArea"]
+position = Vector2( 0, 8 )
+shape = SubResource( 89 )
+
 [node name="CollisionTrafficArea" type="Area2D" parent="CarRed"]
 collision_layer = 264
 collision_mask = 264
 
 [node name="CollisionTraffic" type="CollisionShape2D" parent="CarRed/CollisionTrafficArea"]
-position = Vector2( 0, 18 )
+position = Vector2( 0, 18.6 )
 shape = SubResource( 73 )
-
-[node name="CollisionTraffic2" type="CollisionShape2D" parent="CarRed/CollisionTrafficArea"]
-visible = false
-position = Vector2( -14, 8 )
-shape = SubResource( 73 )
-disabled = true
 
 [node name="CarLeft" type="Node2D" parent="CarRed"]
+visible = false
 
 [node name="Roof" type="Sprite" parent="CarRed/CarLeft"]
 position = Vector2( 0, -8 )
@@ -740,23 +762,29 @@ position = Vector2( 0, 8 )
 shape = SubResource( 11 )
 
 [node name="CollisionV" type="CollisionShape2D" parent="CarGreen"]
-visible = false
 position = Vector2( 0, 6.5 )
 shape = SubResource( 28 )
 
+[node name="TrafficCollisionArea" type="Area2D" parent="CarGreen"]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="v" type="CollisionShape2D" parent="CarGreen/TrafficCollisionArea"]
+position = Vector2( 0, 6.5 )
+shape = SubResource( 88 )
+
+[node name="h" type="CollisionShape2D" parent="CarGreen/TrafficCollisionArea"]
+position = Vector2( 0, 8 )
+shape = SubResource( 89 )
+
 [node name="CollisionTrafficArea" type="Area2D" parent="CarGreen"]
-collision_layer = 256
-collision_mask = 256
+collision_layer = 264
+collision_mask = 264
 
 [node name="CollisionTraffic" type="CollisionShape2D" parent="CarGreen/CollisionTrafficArea"]
-position = Vector2( 14, 8 )
+position = Vector2( 0, 18.6 )
 shape = SubResource( 73 )
-
-[node name="CollisionTraffic2" type="CollisionShape2D" parent="CarGreen/CollisionTrafficArea"]
-visible = false
-position = Vector2( -14, 8 )
-shape = SubResource( 73 )
-disabled = true
 
 [node name="CarLeft" type="Node2D" parent="CarGreen"]
 visible = false

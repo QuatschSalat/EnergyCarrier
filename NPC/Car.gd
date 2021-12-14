@@ -27,6 +27,8 @@ onready var collision_h := $CollisionH
 onready var collision_v := $CollisionV
 onready var park_timer := $ParkTimer
 onready var collision_traffic := $CollisionTrafficArea/CollisionTraffic
+onready var traffic_collsion_v := $TrafficCollisionArea/v
+onready var traffic_collsion_h := $TrafficCollisionArea/h
 onready var drive_sound := $DriveSound
 onready var honk := $Honk
 
@@ -171,26 +173,32 @@ func change_direction(direction) -> void:
 		car_down.visible = false
 		collision_h.disabled = true
 		collision_v.disabled = true
+		traffic_collsion_v.disabled = true
+		traffic_collsion_h.disabled = true
 		match direction:
 			"left":
 				car_left.visible = true
 				collision_h.disabled = false
-				collision_traffic.position = Vector2(-14, 8)
+				collision_traffic.position = Vector2(-14.6, 8)
+				traffic_collsion_h.disabled = false
 				# collision_traffic_back.position = Vector2(14, 8)
 			"right":
 				car_right.visible = true
 				collision_h.disabled = false
-				collision_traffic.position = Vector2(14, 8)
+				collision_traffic.position = Vector2(14.6, 8)
+				traffic_collsion_h.disabled = false
 				# collision_traffic_back.position = Vector2(-14, 8)
 			"up":
 				car_up.visible = true
 				collision_v.disabled = false
-				collision_traffic.position = Vector2(0, -6)
+				collision_traffic.position = Vector2(0, -5.6)
+				traffic_collsion_v.disabled = false
 				# collision_traffic_back.position = Vector2(0, 18)
 			"down":
 				car_down.visible = true
 				collision_v.disabled = false
-				collision_traffic.position = Vector2(0, 18)
+				collision_traffic.position = Vector2(0, 18.6)
+				traffic_collsion_v.disabled = false
 				# collision_traffic_back.position = Vector2(0, -6)
 
 func update_capacity_bar() -> void:
@@ -209,10 +217,13 @@ func _on_ParkTimer_timeout():
 
 
 func _on_CollisionTrafficArea_area_entered(area):
-	print("_on_CollisionTrafficArea_area_entered")
-#	traffic = true
-
+	print("_on_CollisionTrafficArea_area_entered: ", self.name, " -> ", area.name)
+	if area != null and area.name == "TrafficCollisionArea":
+		traffic = true
+		drive_sound.stop()
 
 func _on_CollisionTrafficArea_area_exited(area):
-	print("_on_CollisionTrafficArea_area_exited")
-#	traffic = false
+	print("_on_CollisionTrafficArea_area_exited: ", self.name, " -> ", area.name)
+	if area != null and area.name == "TrafficCollisionArea":
+		traffic = false
+		drive_sound.play()
