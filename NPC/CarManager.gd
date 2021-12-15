@@ -1,6 +1,6 @@
 extends Node
 
-var spawn_time_multiplier = 2
+var spawn_time_multiplier = 0.5 if Global.debug_mode else 2
 
 onready var car_yellow = $CarYellow
 onready var car_red = $CarRed

@@ -54,7 +54,7 @@ extents = Vector2( 8, 9.5 )
 extents = Vector2( 11, 8 )
 
 [sub_resource type="RectangleShape2D" id=73]
-extents = Vector2( 3.44195, 2.42274 )
+extents = Vector2( 3, 2.42274 )
 
 [sub_resource type="AtlasTexture" id=22]
 atlas = ExtResource( 1 )
@@ -503,7 +503,6 @@ position = Vector2( 0, 18.6 )
 shape = SubResource( 73 )
 
 [node name="CarLeft" type="Node2D" parent="CarYellow"]
-visible = false
 
 [node name="Roof" type="Sprite" parent="CarYellow/CarLeft"]
 position = Vector2( 0, -8 )
@@ -589,6 +588,8 @@ process_mode = 0
 wait_time = 0.5
 one_shot = true
 
+[node name="HonkTimer" type="Timer" parent="CarYellow"]
+
 [node name="DriveSound" type="AudioStreamPlayer2D" parent="CarYellow"]
 stream = ExtResource( 32 )
 volume_db = -25.0
@@ -597,6 +598,7 @@ max_distance = 100.0
 
 [node name="Honk" type="AudioStreamPlayer2D" parent="CarYellow"]
 stream = ExtResource( 36 )
+volume_db = -6.0
 pitch_scale = 1.21
 
 [node name="CarRed" type="KinematicBody2D" parent="."]
@@ -731,6 +733,8 @@ process_mode = 0
 wait_time = 0.5
 one_shot = true
 
+[node name="HonkTimer" type="Timer" parent="CarRed"]
+
 [node name="DriveSound" type="AudioStreamPlayer2D" parent="CarRed"]
 position = Vector2( 29, 28 )
 stream = ExtResource( 32 )
@@ -741,6 +745,7 @@ max_distance = 100.0
 [node name="Honk" type="AudioStreamPlayer2D" parent="CarRed"]
 position = Vector2( 29, 28 )
 stream = ExtResource( 36 )
+volume_db = -6.0
 pitch_scale = 1.21
 
 [node name="CarGreen" type="KinematicBody2D" parent="."]
@@ -783,7 +788,7 @@ collision_layer = 264
 collision_mask = 264
 
 [node name="CollisionTraffic" type="CollisionShape2D" parent="CarGreen/CollisionTrafficArea"]
-position = Vector2( 0, 18.6 )
+position = Vector2( 0, 18.5 )
 shape = SubResource( 73 )
 
 [node name="CarLeft" type="Node2D" parent="CarGreen"]
@@ -870,6 +875,8 @@ process_mode = 0
 wait_time = 0.5
 one_shot = true
 
+[node name="HonkTimer" type="Timer" parent="CarGreen"]
+
 [node name="DriveSound" type="AudioStreamPlayer2D" parent="CarGreen"]
 position = Vector2( 25, -25 )
 stream = ExtResource( 32 )
@@ -880,10 +887,11 @@ max_distance = 100.0
 [node name="Honk" type="AudioStreamPlayer2D" parent="CarGreen"]
 position = Vector2( 25, -25 )
 stream = ExtResource( 36 )
+volume_db = -6.178
 pitch_scale = 1.21
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 37, 363 )
+position = Vector2( 50, 361 )
 z_index = 1
 collision_layer = 2304
 collision_mask = 2304
@@ -1396,22 +1404,28 @@ process_mode = 0
 [node name="PathToCharger" type="Node2D" parent="."]
 
 [node name="1" type="Path2D" parent="PathToCharger"]
+visible = false
 curve = SubResource( 20 )
 
 [node name="2" type="Path2D" parent="PathToCharger"]
+visible = false
 curve = SubResource( 31 )
 
 [node name="3" type="Path2D" parent="PathToCharger"]
+visible = false
 curve = SubResource( 32 )
 
 [node name="4" type="Path2D" parent="PathToCharger"]
+visible = false
 curve = SubResource( 57 )
 
 [node name="5" type="Path2D" parent="PathToCharger"]
+visible = false
 position = Vector2( -1, 0 )
 curve = SubResource( 58 )
 
 [node name="PathOut" type="Node2D" parent="."]
+visible = false
 
 [node name="1" type="Path2D" parent="PathOut"]
 curve = SubResource( 37 )
@@ -1436,18 +1450,23 @@ curve = SubResource( 87 )
 curve = SubResource( 30 )
 
 [node name="2" type="Path2D" parent="ParkingPath/In"]
+visible = false
 curve = SubResource( 33 )
 
 [node name="3" type="Path2D" parent="ParkingPath/In"]
+visible = false
 curve = SubResource( 34 )
 
 [node name="4" type="Path2D" parent="ParkingPath/In"]
+visible = false
 curve = SubResource( 35 )
 
 [node name="5" type="Path2D" parent="ParkingPath/In"]
+visible = false
 curve = SubResource( 36 )
 
 [node name="Out" type="Node2D" parent="ParkingPath"]
+visible = false
 
 [node name="1" type="Path2D" parent="ParkingPath/Out"]
 curve = SubResource( 38 )
@@ -1699,12 +1718,15 @@ texture = SubResource( 83 )
 [connection signal="area_entered" from="CarYellow/CollisionTrafficArea" to="CarYellow" method="_on_CollisionTrafficArea_area_entered"]
 [connection signal="area_exited" from="CarYellow/CollisionTrafficArea" to="CarYellow" method="_on_CollisionTrafficArea_area_exited"]
 [connection signal="timeout" from="CarYellow/ParkTimer" to="CarYellow" method="_on_ParkTimer_timeout"]
+[connection signal="timeout" from="CarYellow/HonkTimer" to="CarYellow" method="_on_HonkTimer_timeout"]
 [connection signal="area_entered" from="CarRed/CollisionTrafficArea" to="CarRed" method="_on_CollisionTrafficArea_area_entered"]
 [connection signal="area_exited" from="CarRed/CollisionTrafficArea" to="CarRed" method="_on_CollisionTrafficArea_area_exited"]
 [connection signal="timeout" from="CarRed/ParkTimer" to="CarRed" method="_on_ParkTimer_timeout"]
+[connection signal="timeout" from="CarRed/HonkTimer" to="CarRed" method="_on_HonkTimer_timeout"]
 [connection signal="area_entered" from="CarGreen/CollisionTrafficArea" to="CarGreen" method="_on_CollisionTrafficArea_area_entered"]
 [connection signal="area_exited" from="CarGreen/CollisionTrafficArea" to="CarGreen" method="_on_CollisionTrafficArea_area_exited"]
 [connection signal="timeout" from="CarGreen/ParkTimer" to="CarGreen" method="_on_ParkTimer_timeout"]
+[connection signal="timeout" from="CarGreen/HonkTimer" to="CarGreen" method="_on_HonkTimer_timeout"]
 [connection signal="area_entered" from="Player/PlayerArea" to="Player" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Player/PlayerArea" to="Player" method="_on_Area2D_area_exited"]
 [connection signal="timeout" from="Player/Camera2D/UI/GameTimer" to="Player/Camera2D/UI" method="_on_GameTimer_timeout"]

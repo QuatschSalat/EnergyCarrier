@@ -64,7 +64,7 @@ func _input(event):
 		match event.scancode:
 			KEY_E:
 				if reached_area:
-					if inventar.items > 0:
+					if inventar.items > 0 or Global.debug_mode:
 						reached_area.add_capacity(100)
 						inventar.remove_item()
 						$Interaction.play()

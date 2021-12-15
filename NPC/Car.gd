@@ -26,6 +26,7 @@ onready var car_down := $CarDown
 onready var collision_h := $CollisionH
 onready var collision_v := $CollisionV
 onready var park_timer := $ParkTimer
+onready var honk_timer := $HonkTimer
 onready var collision_traffic := $CollisionTrafficArea/CollisionTraffic
 onready var traffic_collsion_v := $TrafficCollisionArea/v
 onready var traffic_collsion_h := $TrafficCollisionArea/h
@@ -49,6 +50,7 @@ var traffic = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	capacity_bar.init_values(capacity, current_capacity)
+	honk_timer.wait_time = randi() % 5 + 1
 	change_direction(direction2str(position))
 
 func use_path_to_charger() -> void:
@@ -166,6 +168,8 @@ func direction2str(direction):
 
 func change_direction(direction) -> void:
 	if current_direction != direction:
+		if state == STATE.TO_CHARGER and direction == "down":
+			print("!!! HERE IS THE BUG !!!")
 		current_direction = direction
 		car_left.visible = false
 		car_right.visible = false
@@ -179,13 +183,13 @@ func change_direction(direction) -> void:
 			"left":
 				car_left.visible = true
 				collision_h.disabled = false
-				collision_traffic.position = Vector2(-14.6, 8)
+				collision_traffic.position = Vector2(-14.1, 8)
 				traffic_collsion_h.disabled = false
 				# collision_traffic_back.position = Vector2(14, 8)
 			"right":
 				car_right.visible = true
 				collision_h.disabled = false
-				collision_traffic.position = Vector2(14.6, 8)
+				collision_traffic.position = Vector2(14.1, 8)
 				traffic_collsion_h.disabled = false
 				# collision_traffic_back.position = Vector2(-14, 8)
 			"up":
@@ -215,15 +219,28 @@ func _on_ParkTimer_timeout():
 #	use_parking_path_in()
 	pass
 
+func _on_HonkTimer_timeout():
+	honk.play()
+	
+	honk_timer.wait_time = randi() % 5 + 1
+	if traffic:
+		honk_timer.start()
 
 func _on_CollisionTrafficArea_area_entered(area):
 	print("_on_CollisionTrafficArea_area_entered: ", self.name, " -> ", area.name)
 	if area != null and area.name == "TrafficCollisionArea":
 		traffic = true
 		drive_sound.stop()
+		if honk_timer.is_stopped():
+			honk_timer.start()
+			
 
 func _on_CollisionTrafficArea_area_exited(area):
 	print("_on_CollisionTrafficArea_area_exited: ", self.name, " -> ", area.name)
 	if area != null and area.name == "TrafficCollisionArea":
 		traffic = false
 		drive_sound.play()
+		if not honk_timer.is_stopped():
+			honk_timer.stop()
+
+
